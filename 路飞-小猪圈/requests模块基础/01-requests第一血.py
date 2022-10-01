@@ -14,12 +14,6 @@ def getHtmlText(url):
         return r.text
     except:
         return 'Something Wrong!'
-    
-    
-def gethtml(url):
-    try:
-        
-    except:
 
 if __name__ == '__main__':
     # setp1: 指定url
