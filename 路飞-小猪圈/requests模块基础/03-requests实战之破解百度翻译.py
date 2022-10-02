@@ -10,7 +10,7 @@ if __name__ == '__main__':
     # 1.指定URL
     post_url = 'https://fanyi.baidu.com/sug'
     # 2.UA伪装：将对应的 User-Agent 封装备到一个字典中
-    heaaders = {
+    headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.53'
     }
     # 3.post 请求参数处理（同get请求一致）
@@ -19,7 +19,7 @@ if __name__ == '__main__':
         'kw': word
     }
     # 4.进行请求发送
-    response = requests.post(url=post_url, data=data, headers=heaaders)
+    response = requests.post(url=post_url, data=data, headers=headers)
     # 5.获取响应数据: json()返回的是一个OBJ对象，如果确认响应数据是json类型的，才可以使用json方法
     dic_obj = response.json()
     

@@ -17,7 +17,7 @@ if __name__ == '__main__':
     url = 'https://www.sogou.com/web'
     
     # UA伪装：将对应的 User-Agent 封装备到一个字典中
-    heaaders = {
+    headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.53'
     }
     
@@ -28,7 +28,7 @@ if __name__ == '__main__':
     }
 
     # 对指定的url发起的请求对应的url是携带参数的，并且请求垸程中处理了参数
-    response = requests.get(url=url, params=param, headers=heaaders)    
+    response = requests.get(url=url, params=param, headers=headers)    
     page_text = response.text
     fileName = f'{kw}.html'
     with open(fileName, mode='w', encoding='utf-8') as fp:
