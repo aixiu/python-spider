@@ -31,6 +31,14 @@ if __name__ == '__main__':
     filename = f'{address}肯德基地址.json'
     data_json = json.loads(data_texe)  # 字符串转换成字典  json模块
     # data_dict = ast.literal_eval(data_texe)   # 字符串转换成字典  ast模块
+    
+    for dic in data_json['Table1']:
+        storeName = dic['storeName']
+        addressDetail = dic['addressDetail']
+        pro = dic['pro']
+        print(f'餐厅名称：{storeName} 餐厅地址：{addressDetail}')
+        
+        
     with open(f'./{filename}', mode='w', encoding='utf-8') as fp:
         json.dump(data_json, fp=fp, ensure_ascii=False)
         
