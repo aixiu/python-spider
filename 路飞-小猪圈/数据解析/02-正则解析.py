@@ -27,7 +27,7 @@ if __name__ == '__main__':
     page_text = requests.get(url=url, headers=headers).text
     
     # 使用聚焦爬虫将页面中
-    ex = pattern = '<div class="thumb">.*?<img src="(.*?)".*?</div>'
+    ex = '<div class="thumb">.*?<img src="(.*?)".*?</div>'
     
     img_src_list = re.findall(ex, page_text, re.S)   #加re.S是为了让.匹配换行符
     # print(img_src_list)
@@ -41,7 +41,7 @@ if __name__ == '__main__':
         
         # 获取图片的name,通过split截取链接的最后一部分用来作为图片的name，区分不同的图片
         img_name = src.split('/')[-1]
-        img_path = f'./qiutuLibs{img_name}'
+        img_path = f'./qiutuLibs/{img_name}'
         
         # 以二进制形式写文件，'wb':以二进制形式写文件
         with open(img_path, mode='wb') as fp:
