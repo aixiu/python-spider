@@ -28,6 +28,7 @@ if __name__=="__main__":
 
     #属性定位：定位第二个div，通过特定的属性定位到该属性对应的标签
     print(soup.find('div', class_='song')) #class_表示参数名称，如果不加下划线则表示关键字而不是参数名称
+    print(soup.find('div', attrs={'class': 'song'})) # 上边内容的别一种写法
     # print(soup.find('div', class_/id/attr='song')) # 属性名还可以是 id attr等
     print('-' * 40)
 
