@@ -90,4 +90,10 @@ print(response.content.decode()) # 根据对应的编码进行解析  .decode() 
     直接输出content，会发现前面存在b'这样的标志，这是字节字符串的标志，而text是，没有前面的b,对于纯ascii码，这两个可以说一模一样，对于其他的文字，需要正确编码才能正常显示。大部分情况建议使用.text，因为显示的是汉字，但有时会显示乱码，这时需要用.content.decode('utf-8')，中文常用utf-8和GBK，GB2312等。这样可以手工选择文字编码方式。
 
     所以简而言之，.text是现成的字符串，.content还要编码，但是.text不是所有时候显示都正常，这是就需要用.content进行手动编码。
+    
+    
+    # beautifulsoup中，对外接口，没有提供text这个属性，只有string这个属性值；
+    # beautifulsoup内部才有text这个属性，只供内部使用 –> 如果你想要用text值，应该调用对应的get_text()
+    # 而你之所有能够直接用soup.text而没报错，应该是和python的class的property没有变成private有关系 –>导致你外部也可以访问到这个，本身是只供内部使用的属性值-> 这个要抽空深究了。
+    # https://blog.csdn.net/f156207495/article/details/78074240/
 '''

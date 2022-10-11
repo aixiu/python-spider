@@ -7,7 +7,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
-# 需求：爬取三国演义小说所有的章节标题和章节内容
+# 需求：爬取http://www.biqu5200.net小说站小说的所有的章节标题和章节内容
 
 def getHtmlText(url, headers):
     try:

@@ -17,16 +17,7 @@ def getHtmlText(url, headers):
     except:
         return 'Something Wrong!'
     
-# def getHtmlContent(url, headers):
-#     try:
-#         r = requests.get(url, headers=headers, timeout=20)
-#         r.raise_for_status()
-#         r.encoding = r.apparent_encoding
-#         return r.content
-#     except:
-#         return 'Something Wrong!'
-
-
+    
 if __name__ == '__main__':
     # 对首页的页面数据进行爬取
     url = 'https://www.shicimingju.com/book/sanguoyanyi.html'

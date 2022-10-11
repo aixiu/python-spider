@@ -27,7 +27,7 @@ if __name__ == '__main__':
     page_text = requests.get(url=url, headers=headers).text
     
     # 使用聚焦爬虫将页面中
-    ex = pattern = '<div class="thumb">.*?<img src="(.*?)".*?</div>'
+    ex = '<div class="thumb">.*?<img src="(.*?)".*?</div>'
     
     img_src_list = re.findall(ex, page_text, re.S)   #加re.S是为了让.匹配换行符
     # print(img_src_list)
