@@ -23,7 +23,7 @@ import ddddocr
 
 def recognize():
     ocr = ddddocr.DdddOcr()
-    with open('./code_img/VerifyCode.png', 'rb') as fp:
+    with open('./code_img/hanzi.png', 'rb') as fp:
         img_bytes = fp.read()
     res = ocr.classification(img_bytes)
     print(res)
