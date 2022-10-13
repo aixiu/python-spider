@@ -52,16 +52,18 @@ if __name__ == '__main__':
     
     # 查找每一个文件详情页    
     for li in li_list:        
-        all_urls.append(f"https:{li.xpath('./@href')[0]}")
+        all_urls.append(f"{li.xpath('./@href')[0]}")
+        
+    print(all_urls)
     
     # 找到每个详情页的下载地址：   
     for xq_url in all_urls:
         xq_page_text = gethtmlContent(url=xq_url, headres=headers)
         xq_tree = etree.HTML(xq_page_text)
-        
+                
         # 具体下载地址
-        down_url = xq_tree.xpath("//div[@class='clearfix mt20 downlist']/ul/li/a/@href")[0]
-        
+        down_url = xq_tree.xpath('//*[@id="down"]/div[2]/ul/li[1]/a/@href')
+        print(down_url)
         # 文件名
         file_name = f"{xq_tree.xpath('//h1/text()')[0]}.rar"
         # 定义文件路径
@@ -69,6 +71,7 @@ if __name__ == '__main__':
         
         # 获取文件下载数据
         file_data = gethtmlContent(url=down_url, headres=headers)
+        
         
         # 下载文件持久化保存
         with open(file_path, mode='wb') as fp:
