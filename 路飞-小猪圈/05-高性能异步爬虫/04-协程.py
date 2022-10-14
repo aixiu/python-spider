@@ -18,3 +18,53 @@
     
     await 用来挂机阻塞方法的执行。
 '''
+
+import asyncio
+
+async def request(url):
+    print(f'正在请求的url是{url}')
+    print(f'请求成功{url}')
+    return url
+    
+# async 修饰的函数，调用之后返回的是一个协程对    
+c = request('www.baidu.com')
+
+# # 创建一个事件循环对象
+# loop = asyncio.get_event_loop()
+
+# # 将协程对象注册到loop中，然后启动loop  即可以实现注册，同时也启动循环
+# loop.run_until_complete(c)
+
+
+# task的使用
+
+# loop = asyncio.get_event_loop()
+# # 基于 loop创建了一个 task对象
+# task = loop.create_task(c)
+# print(task)
+
+# # 执行
+# loop.run_until_complete(task)
+# print(task)
+
+
+# future的使中用
+
+# loop = asyncio.get_event_loop()
+# task = asyncio.ensure_future(c)
+# print(task)
+
+# loop.run_until_complete(task)
+# print(task)
+
+
+# 绑定回调
+def callback_func(task):
+    # result返回的就是任务对象中封装的协程对象对应函数的返回值
+    print(task.result())
+    
+loop = asyncio.get_event_loop()
+task = asyncio.ensure_future(c)
+# 将回调函数绑定到任务对象中
+task.add_done_callback(callback_func)
+loop.run_until_complete(task)
