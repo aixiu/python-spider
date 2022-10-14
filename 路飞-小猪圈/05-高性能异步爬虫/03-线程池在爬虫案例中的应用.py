@@ -73,14 +73,18 @@ for li in li_list:
     new_end_url = end_url.replace(f'{end_url.split("-")[0]}', f'cont-{mv_id}')
     
     # 拼接url的开始部分
-    start_url = ''
-    start_url_list = video_url.split('/')
-    for u_str in range(0, len(start_url_list)):
-        if u_str < len(start_url_list) -1:
-            start_url += f'{start_url_list[u_str]}/'
+    # start_url = ''
+    # start_url_list = video_url.split('/')
+    # for u_str in range(0, len(start_url_list)):
+    #     if u_str < len(start_url_list) -1:
+    #         start_url += f'{start_url_list[u_str]}/'
+    
+    start_url = f"{video_url.rsplit('/', 1)[0]}/"   # rsplit 切掉右边的 / ，取第1个，即左边部分，比上边的拼接方法简单
             
     # 完整的 url        
     new_url = f'{start_url}{new_end_url}'
+    
+    print(new_url)
     
     mp4_data = {
         'name': name,
