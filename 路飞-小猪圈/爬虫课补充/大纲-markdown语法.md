@@ -337,7 +337,7 @@ await 是一个只能在协程函数中使用的关键字，用于遇到 IO 操�
 
 [原文链接](https://blog.csdn.net/m0_51180924/article/details/124612674)
 
-#### Task对象
+### Task对象
 
 - 在程序想要创建多个任务对象，需要使用 task 对象来实现。
 
@@ -352,6 +352,174 @@ When a coroutine is wrapped into a Task with functions like asyncio.create_task(
 
 白话:在事件循环中添加多个任务的。
 Tasks用于并发调度协程，通过 asyncio.create_task(协程对象)的方式创建Task对象，这样可以让协程加入事件循环中等待被调度执行。除了使用  asyncio.create_task() 函数以外，还可以用低层级 loop.create_task() 或 ensure_future() 函数。不建议手动实列化 Task 对象。
+
+注意：asyncio.create_task() 函数在python3.7中被加入。在python3.7之前，可以改用低层级的 asyncio.ensure_future() 函数。
+
+#### 示例4
+
+```python
+import asyncio
+
+async def func():
+    print(1)
+    await asyncio.sleep(2)
+    print(2)
+    return '返回值'
+
+async def main():
+    print('main开始')
+    
+    # 创建协程，将协程封装到一个Task对象中并立即添加到事件循环的任务列表中，等待事件循环去执行（默认是就绪状态）。
+    # 创建了一个 Task 对象，将当前执行 func函数任务添加到事件循环。
+    task1 = asyncio.create_task(func())
+    
+    # 创建协程，将协程封装到一个Task对象中并立即添加到事件循环的任务列表中，等待事件循环去执行（默认是就绪状态）。
+    task2 = asyncio.create_task(func())
+    
+    print('main结束')
+    
+    # 当执行某协程遇到 IO 操作时，会自动化切换执行其他任务。
+    # 此处的 await 是等待相对应的协程全都执行完毕并获取取结果
+    
+    ret1 = await task1
+    ret2 = await task2
+    print(ret1, ret2)
+    
+asyncio.run(main())
+```
+
+#### 示例5
+
+```python
+import asyncio
+
+async def func():
+    print(1)
+    await asyncio.sleep(2)
+    print(2)
+    return '返回值'
+
+async def main():
+    print('main开始')
+
+    task_list = [
+        asyncio.create_task(func(), name="n1"),
+        asyncio.create_task(func(), name="n2")
+    ]
+    
+    print('main结束')
+    
+    done, pending = await asyncio.wait(task_list, timeout=None)
+    print(done)
+
+    
+asyncio.run(main())
+```
+
+#### 示例6
+
+注意：task_list 放在函数外边的情况（用的不多）
+
+```python
+import asyncio
+
+async def func():
+    print(1)
+    await asyncio.sleep(2)
+    print(2)
+    return '返回值'
+
+task_list = [
+    func(),
+    func()
+]
+    
+done, pending = asyncio.run(asyncio.wait(task_list))
+print(done)
+```
+
+### Future对象（asyncio.Future）
+
+Future和Task，协程对象一样，都是可被加到列表中的任务
+
+> A Futureis a special low-level awaitable object that represents an eventual result of an asynchronous operation.
+
+Task继承自Future，Task对象内部await结果的处理基于Future对象来的。实际上，Future和Task的用法几乎一样
+
+#### 示例7
+
+```python
+import asyncio
+
+async def main():
+    # 获取当前事件循环
+    loop = asyncio.get_running_loop()
+
+    # 创建一个任务（Future对象），这个任务什么都不干。
+    fut = loop.create_future()
+
+    # 等待任务最终结果（Future对象），没有结果则会一直等下去。
+    await fut
+
+asyncio.run( main() )
+
+```
+
+#### 示例8
+
+```python
+import asyncio
+
+async def set_affter(fut):
+    await asyncio.sleep(2)
+    fut.set_result('666')
+    
+async def main():
+    # 获取当前事件循环
+    loop = asyncio.get_running_loop()
+    
+    # 创建一个任务(Future 对象)，没绑定任何行为，则这个任务永远不知道什么时候结束。
+    fut = loop.create_future()
+    
+    # 创建一个任务（Task对象），绑定了 set_after函数，函数内部在2s之后，会给fut赋值
+    # 即手动设置 future 作雾的最终结翰林，那么 fut就可以结束了。
+    await loop.create_task(set_affter(fut))
+    
+    # 等待 Future 对象获取 最终结果，否则一直等下去
+    data = await fut
+    print(data)
+    
+asyncio.run(main())
+
+```
+
+### concurrent.futures.Future对象
+
+### 示例9
+
+```python
+import time
+from concurrent.futures import Future
+from concurrent.futures.thread import ThreadPoolExecutor
+from concurrent.futures.process import ProcessPoolExecutor
+
+
+def func(value):
+    time.sleep(1)
+    print(value)
+    return 123
+
+# 创建线程池
+pool = ThreadPoolExecutor(max_workers=5)
+
+# 创建进程池
+# pool = ProcessPoolExecutor(max_workers=5)
+
+
+for i in range(10):
+    fut = pool.submit(func, i)
+    print(fut)
+```
 
 ## Markdown 常用格式
 
