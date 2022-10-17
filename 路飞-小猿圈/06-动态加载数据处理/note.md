@@ -42,3 +42,5 @@
     - 拖动的方向和像素：move_by_offset(x, y)
     - .perform()让动作链立即执行
     - action.release()释放动作链对象
+
+- 12306模拟登录
