@@ -30,6 +30,13 @@ bro = webdriver.Edge(service=Service('./msedgedriver.exe'), options=edge_options
 bro.get('https://kyfw.12306.cn/otn/resources/login.html')
 
 # 解决特征识别, 用来解决滑块出错，验证问题
+# https://blog.csdn.net/weixin_43870646/article/details/105418801
+# Object.defineProperty() 方法直接在一个对象上定义一个新属性，或者修改一个已经存在的属性， 并返回这个对象。
+# Object.defineProperty(obj, prop, descriptor)
+# 参数
+# obj 需要定义属性的对象。
+# prop 需被定义或修改的属性名。
+# descriptor 需被定义或修改的属性的描述符。
 script = 'Object.defineProperty(navigator, "webdriver", {get: () => false,});'
 bro.execute_script(script)
 
