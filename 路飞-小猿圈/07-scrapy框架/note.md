@@ -16,7 +16,7 @@
 ## scrapy框架的基本使用
 
 - 环境安装：pip install scrapy
-- 安装：pip install pywin32  
+- 安装：pip install pywin32
 - pywin32是Python的一个代码库，包装了Windows 系统的 Win32 API，能创建和使用 COM 对象和图形窗口界面。如果你想用Python操控Windows系统，创建窗口、接受键鼠命令，或用到Win32 API，那你就需要它。
 - 创建一个工程  scrapy startproject XXXPro
 - 一定要先进入XXXPro工程目录
@@ -28,4 +28,16 @@
 
 ## scrapy数据解析
 
-  - 
+## scrapy持久化存储
+
+- 基于终端指令：
+  - 要求：只可以将parse方法的返回值存储到本地的文本文件中
+  - 持久化存储对应的文本文件的类型只可以为：'json', 'jsonlines', 'jl', 'csv', 'xml', 'marshal', 'pickle'
+  - 指令：scrapy crawl xxx -o filePath
+  - 好处：简洁高效便捷
+  - 缺点：局限性比较强
+    - 数据只可以存储到指定后缀的文本文件中
+- 基于管道：
+  - 编码流程：
+    - 数据解折
+    - 将解析的数据封装存储到item类型的对象
