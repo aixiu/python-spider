@@ -99,7 +99,7 @@ if __name__ == '__main__':
         vod_actor = ''.join(vod_actor_list)
         vod_actor = vod_actor.replace(" / ", ',')  # 主演
         
-        vod_content = tree.xpath('//*[@id="link-report"]/span/text()')[0].strip()  # 简介
+        vod_content = tree.xpath('//*[@id="link-report-intra"]/span/text()')[0].strip()  # 简介
         
         vod_writer_list = tree.xpath('//*[@id="info"]/span[2]/span[2]/a/text()')
         vod_writer = ','.join(vod_writer_list)  # 编剧
@@ -159,35 +159,33 @@ if __name__ == '__main__':
             "vod_duration": vod_duration,
             "vod_reurl": vod_reurl,
             "vod_douban_id": vod_douban_id,        
-        }
-        
+        }        
 
         with open(f'{flie_path}/{vod_douban_id}.json', mode='w', encoding='utf-8') as fp:
             json.dump(vod_data, fp=fp, ensure_ascii=False, indent=4)
         print(f'{vod_douban_id}  ==> 采集完毕')
         
-        # print(
-        #     f'"vod_name": "{vod_name}"\n',
-        #     f'"vod_sub": "{vod_sub}"\n',
-        #     f'"vod_pic": "{vod_pic}"\n',
-        #     f'"vod_year": "{vod_year}"\n',
-        #     f'"vod_lang": "{vod_lang}"\n',
-        #     f'"vod_class": "{vod_class}"\n',
-        #     f'"vod_actor": "{vod_actor}"\n',
-        #     f'"vod_content": "{vod_content}"\n',
-        #     f'"vod_writer": "{vod_writer}"\n',
-        #     f'"vod_area": "{vod_area}"\n',
-        #     f'"vod_remarks": "{vod_remarks}"\n',
-        #     f'"vod_director": "{vod_director}"\n',
-        #     f'"vod_pubdate": "{vod_pubdate}"\n',
-        #     f'"vod_total": "{vod_total}"\n',
-        #     f'"vod_score": "{vod_score}"\n',
-        #     f'"vod_douban_score": "{vod_douban_score}"\n',
-        #     f'"vod_score_num": "{vod_score_num}"\n',
-        #     f'"vod_score_all": "{vod_score_all}"\n',
-        #     f'"vod_duration": "{vod_duration}"\n',
-        #     f'"vod_reurl": "{vod_reurl}"\n',
-        #     f'"vod_douban_id": "{vod_douban_id}"\n',
-            
-        # )
+        print(
+            f'"vod_name": "{vod_name}"\n',
+            f'"vod_sub": "{vod_sub}"\n',
+            f'"vod_pic": "{vod_pic}"\n',
+            f'"vod_year": "{vod_year}"\n',
+            f'"vod_lang": "{vod_lang}"\n',
+            f'"vod_class": "{vod_class}"\n',
+            f'"vod_actor": "{vod_actor}"\n',
+            f'"vod_content": "{vod_content}"\n',
+            f'"vod_writer": "{vod_writer}"\n',
+            f'"vod_area": "{vod_area}"\n',
+            f'"vod_remarks": "{vod_remarks}"\n',
+            f'"vod_director": "{vod_director}"\n',
+            f'"vod_pubdate": "{vod_pubdate}"\n',
+            f'"vod_total": "{vod_total}"\n',
+            f'"vod_score": "{vod_score}"\n',
+            f'"vod_douban_score": "{vod_douban_score}"\n',
+            f'"vod_score_num": "{vod_score_num}"\n',
+            f'"vod_score_all": "{vod_score_all}"\n',
+            f'"vod_duration": "{vod_duration}"\n',
+            f'"vod_reurl": "{vod_reurl}"\n',
+            f'"vod_douban_id": "{vod_douban_id}"\n',            
+        )
         
