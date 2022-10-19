@@ -1,4 +1,4 @@
-# Scrapy settings for kendejiPro project
+# Scrapy settings for xiaohuaPro project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,10 +7,10 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'kendejiPro'
+BOT_NAME = 'xiaohuaPro'
 
-SPIDER_MODULES = ['kendejiPro.spiders']
-NEWSPIDER_MODULE = 'kendejiPro.spiders'
+SPIDER_MODULES = ['xiaohuaPro.spiders']
+NEWSPIDER_MODULE = 'xiaohuaPro.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -48,13 +48,13 @@ LOG_LEVEL = 'ERROR'
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'kendejiPro.middlewares.KendejiproSpiderMiddleware': 543,
+#    'xiaohuaPro.middlewares.XiaohuaproSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'kendejiPro.middlewares.KendejiproDownloaderMiddleware': 543,
+#    'xiaohuaPro.middlewares.XiaohuaproDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,11 +65,9 @@ LOG_LEVEL = 'ERROR'
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   'kendejiPro.pipelines.KendejiproPipeline': 300,
-   'kendejiPro.pipelines.mysqPileLine': 301,
-   # 300表示的是优先级，数值越小优先级越高
-}
+#ITEM_PIPELINES = {
+#    'xiaohuaPro.pipelines.XiaohuaproPipeline': 300,
+#}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
