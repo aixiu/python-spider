@@ -6,9 +6,7 @@
 import scrapy
 
 
-class BoosproItem(scrapy.Item):
+class ImgsproItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    job_desc = scrapy.Field()
-    job_name = scrapy.Field()
-    # pass
+    pass

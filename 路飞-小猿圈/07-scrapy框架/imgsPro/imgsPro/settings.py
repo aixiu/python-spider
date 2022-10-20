@@ -1,4 +1,4 @@
-# Scrapy settings for boosPro project
+# Scrapy settings for imgsPro project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,10 +7,10 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'boosPro'
+BOT_NAME = 'imgsPro'
 
-SPIDER_MODULES = ['boosPro.spiders']
-NEWSPIDER_MODULE = 'boosPro.spiders'
+SPIDER_MODULES = ['imgsPro.spiders']
+NEWSPIDER_MODULE = 'imgsPro.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -34,28 +34,27 @@ LOG_LEVEL = 'ERROR'
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-# COOKIES_ENABLED = False
+#COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-# DEFAULT_REQUEST_HEADERS = {
+#DEFAULT_REQUEST_HEADERS = {
 #   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 #   'Accept-Language': 'en',
-#   'cookies': '__g=-; Hm_lvt_194df3105ad7148dcf2b98a91b5e727a=1666190809; __l=l=/www.zhipin.com/web/geek/job?query=python&city=100010000&r=&g=&s=3&friend_source=0&s=3&friend_source=0; wd_guid=d538d5ec-4a94-4f6d-b3d2-68dcdeeaa796; historyState=state; _bl_uid=z7lsw9psfyprev0wR3g9rbjvwUyn; __c=1666190809; __a=35861951.1666190809..1666190809.3.1.3.3; __zp_stoken__=9a3dePCtialgpdWlvUClIT2ohQCN5MH13eWMgfwNHA3l7R3hHL2V/UyZKRi5ITkhdGmNNUk17eVFkXygfHjR5M1UEGQtfZxMaCxQXUChMbR86BAlKMxwFO08kcF42RTAWWFp/Wz9bDVgtTSw=; Hm_lpvt_194df3105ad7148dcf2b98a91b5e727a=1666190933'
-# }
+#}
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'boosPro.middlewares.BoosproSpiderMiddleware': 543,
+#    'imgsPro.middlewares.ImgsproSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'boosPro.middlewares.BoosproDownloaderMiddleware': 543,
+#    'imgsPro.middlewares.ImgsproDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -66,9 +65,9 @@ LOG_LEVEL = 'ERROR'
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   'boosPro.pipelines.BoosproPipeline': 300,
-}
+#ITEM_PIPELINES = {
+#    'imgsPro.pipelines.ImgsproPipeline': 300,
+#}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
