@@ -1,4 +1,5 @@
 import scrapy
+from imgsPro.items import ImgsproItem
 
 
 class ImgSpider(scrapy.Spider):
@@ -11,7 +12,12 @@ class ImgSpider(scrapy.Spider):
         for div in div_list:
             # src = 'https://sc.chinaz.com{}'.format(div.xpath('./div[@class="bot-div"]/a/@href'))
             img_name = div.xpath('./div/a/text()').extract_first()
-            src = div.xpath('./img/@src').extract_first()
-            print(f'{img_name} ==> {src}')
+            src = f"https:{div.xpath('./img/@data-original').extract_first()}"
+            # print(f'{img_name} ==> {src}')
+            
+            item = ImgsproItem()
+            item['src'] = item
+            
+            yield item
             
 
