@@ -8,6 +8,10 @@
 from itemadapter import ItemAdapter
 
 
-class ImgsproPipeline:
+# class ImgsproPipeline:
+#     def process_item(self, item, spider):
+#         return item
+
+class ImagesPipeline:
     def process_item(self, item, spider):
         return item
