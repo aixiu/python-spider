@@ -59,12 +59,18 @@ if __name__=="__main__":
     print('-' * 40)
 
     '''
-    -获取标签之间的文本数据：
-                -soup.a.text/string/get_text():text属性和get_text()方法可以获取某一个标签中所有的文本内容，直系非直系都可以
-                                               string属性只能获取该标签下面直系的文本内容
-    -获取标签中的属性值：
-                -soup.a['src']:标签后面直接跟属性名称,如soup.select('.tang > ul a')[0]['href']
-                -li.a就可以获取li标签中的a标签
+    - 获取标签之间的文本数据：
+        - soup.a.text/string/get_text()  
+        - text属性和get_text()方法可以获取某一个标签中所有的文本内容，直系非直系都可以
+        - string属性只能获取该标签下面直系的文本内容
+        
+        注意：
+        beautifulsoup中，对外接口，没有提供text这个属性，只有string这个属性值；
+        beautifulsoup内部才有text这个属性，只供内部使用 –> 如果你想要用text值，应该调用对应的get_text()
+        
+    - 获取标签中的属性值：
+        -soup.a['src']   标签后面直接跟属性名称,如soup.select('.tang > ul a')[0]['href']
+        -li.a就可以获取li标签中的a标签
     '''
 
     #多个层级：如ul和a之间不是直系子标签,可以用空格表示多个层级
